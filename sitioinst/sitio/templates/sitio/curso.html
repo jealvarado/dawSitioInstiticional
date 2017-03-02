@@ -1,0 +1,74 @@
+{% extends "sitio/base.html" %}
+
+{% load static %}
+
+{% block content %}
+<section>
+	<div class="container2">	
+		<fieldset>
+			<div class="row">
+				<br>
+				<br>
+				<legend style="cursor:not-allowed">Información</legend>
+				<div class="col-lg-12 col-sm-7">
+					<div class="tabs-left">
+						<ul class="nav nav-tabs">
+							<li class="active"><a href="#descripcion" data-toggle="tab">Descripción</a></li>
+							<li class="list-inline"><a href="#requisitos" data-toggle="tab">Requisitos</a></li>
+							<li class="list-inline"><a href="#syllabus" data-toggle="tab">Sylabus</a></li>
+							<li class="list-inline"><a href="#politicas" data-toggle="tab">Politicas del curso</a></li>
+						</ul>
+
+
+						<!--Esta es la parte del contenido central donde al dar click en cualquiera de la lista debera mostrar lo que se pida por parte del usuario-->
+						<div class="tab-content">
+							<div class="active tab-pane" id="descripcion">
+								<div id="parrafo">
+
+									<br>
+									<hr>
+									<br>
+									<p>
+										{{ des.contenido|safe }}
+										<hr>
+									</p>
+								</div>
+							</div>
+							<div class="tab-pane" id="requisitos">
+								<div id="parrafo">
+									<div id="cont"><br><br>
+										<table class="table">
+											<thead>
+												<th>PreRequisito</th>
+												<th>Correquisito</th>
+											</thead>
+											<tr>
+												<td>Herramientas de Colaboración Digital.</td>
+												<td>Ninguno</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</div>
+							<br>
+							<div class="tab-pane" id="syllabus">
+							<div>
+								{{ syl.contenido|safe }}
+								</div>
+							</div>
+							<div class="tab-pane" id="politicas">
+									<div>
+										{{ pol.contenido|safe }}
+										</div>
+									</div>
+								</div><!-- /tab-content -->
+							</div><!-- /tab -->
+							<!--</div><-->
+						</div>
+					</div><!-- /row -->
+				</fieldset>			
+			</div><!-- /container -->
+		</section>
+{% endblock %}
+
+

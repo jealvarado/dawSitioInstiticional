@@ -1,0 +1,25 @@
+{% extends "sitio/base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="row">
+	<div class="col-lg-2">
+
+		<!-- menu -->
+		<div id="asideSemanas">
+			<div class="list-group panel" id="listPanel">
+				
+			</div>
+		</div>
+	</div>
+	<section class="col-lg-10" id="seccionClases">
+		<article id="clase1"></article>
+		<article id="clase2"></article>
+	</section>
+</div>
+
+{% endblock %}
+{% block javas %}
+<script src={% static "js/w2w.js" %} type="text/javascript"></script>
+{% endblock %}

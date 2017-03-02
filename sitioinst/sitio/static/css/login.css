@@ -1,0 +1,14 @@
+
+#myModalLogin {
+	width: 25%;
+	height: 70%;
+	position: fixed;
+	left: 35%;
+}
+
+.modal-header, h3, .close {
+      background-color: #5cb85c;
+      color: white !important;
+      text-align: center;
+      font-size: 20px;
+  }

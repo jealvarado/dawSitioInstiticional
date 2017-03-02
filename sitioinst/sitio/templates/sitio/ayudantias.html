@@ -1,0 +1,58 @@
+{% extends "sitio/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<!-- Default panel contents -->
+				<div class="panel-heading">
+					<h4>Horarios de Ayudantías</h4>
+				</div>
+				<div class="table-responsive">   
+					<table class="table" id="tableAyudantias">
+						<thead>
+							<tr>
+								<th>Dia</th>
+								<th>Hora Inicio</th>
+								<th>Hora Fin</th>
+								<th>Ayudante</th>
+								<th>Aula</th>
+								<th>Edificio</th>
+								<th>Mapa</th>
+							</tr>
+						</thead>
+						<tbody>								
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div id="map"></div>
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel">Mapa</h4>
+					</div>
+					<div class="modal-body">
+						<div class="embed-responsive embed-responsive-4by3">
+							<iframe id="mapFrame" src="" frameborder="0" style="border:0" allowfullscreen></iframe>
+						</div>					
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+{% block javas %}
+<script src={% static "js/ayudantias.js" %} type="text/javascript"></script>
+{% endblock %}

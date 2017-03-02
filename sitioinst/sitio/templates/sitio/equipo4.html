@@ -1,0 +1,44 @@
+{% extends "sitio/base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row content">
+	<div class="col-sm-3 sidenav">
+	  <h4>Equipo</h4>
+	  <ul class="nav nav-pills nav-stacked">
+		<li><a href="equipo.html">Coordinador</a></li>
+		<li><a href="equipo2.html">Profesores</a></li>
+		<li><a href="equipo3.html">Ayudantes de Clases</a></li>
+		<li class="active"><a href="#">Ayudantes de Tareas</a></li>
+	  </ul><br>
+	</div>
+	<div class="col-sm-9">
+	  <h4><small>Ayudantes de Tareas</small></h4>
+	  <hr>
+	  <div class="table-responsive">
+		<table class="table">
+	    	<thead>
+	     	<tr>
+	        	<th>#</th>
+	        	<th>Nombre</th>
+	        	<th>Apellido</th>
+	        	<th>Correo</th>
+	        	<th>Paralelo</th>
+	        	<th>Aula</th>
+				<th>Horario</th>
+	      	</tr>
+	    	</thead>
+	    	<tbody>
+	      	
+	    	</tbody>
+	  	</table>
+	  </div>
+	 </div>
+	</div>
+</div>
+{% endblock %}
+{% block javas %}
+<script src={% static "js/equipo4.js" %}></script>
+{% endblock %}
