@@ -94,3 +94,9 @@ class CoRequisito(models.Model):
 	codigo= models.CharField(max_length=12, primary_key=True)
 	nombre= models.CharField(max_length=50)
 
+class Noticia(models.Model):
+	titulo = models.CharField(max_length=100)
+	contenido = RichTextField()
+	fecha = models.DateField()
+	def __str__(self):
+		return self.titulo + " " + str(self.fecha)

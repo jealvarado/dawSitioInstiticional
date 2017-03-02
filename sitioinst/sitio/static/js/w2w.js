@@ -1,12 +1,21 @@
 var sched;
 
+function getClase(parcial, semana, clase) {
+	sched.forEach(function (item) {
+		if (item.parcial==parcial && item.semana==semana && item.clase==clase) {
+			return item
+		}
+	})
+	return 0
+}
+
 function mostrarClase(parcial, semana, clase) {
 	console.log("Parcial: "+parcial, " semana: "+semana+" clse: "+clase);	
 	$("#listPanel a").attr("class","list-group-item");
 	$($("#listPanel > a")[parcial]).attr("class","list-group-item active");
 	//$($("#semanas"+(parcial+1)+" > a")[semana]).attr("class","list-group-item active");
 	$($("#p"+(parcial+1)+ "clases"+(semana+1)+" > a")[clase]).attr("class","list-group-item active");
-	c=sched.parcial[parcial].semana[semana].clase[clase];
+	c=getClase(parcial, semana, clase);
 	$("#seccionClases").empty();
 	$("#seccionClases").append($("<h3>").text(c.tema));
 	$("#seccionClases").append($("<h4>").text(c.descripcion));
@@ -52,7 +61,7 @@ function mostrarClase(parcial, semana, clase) {
 					.append($("<iframe>", {"src":c.linkVideo})))))
 	}
 }
-
+/*
 $(document).ready(function(){
 	url="info/clases"
 	$.getJSON(url, function(resp){
@@ -79,3 +88,32 @@ $(document).ready(function(){
 		mostrarClase(0,0,0);
 	});
 });
+*/
+$(document).ready(function(){
+	url="info/clases"
+	$.getJSON(url, function(resp){
+		sched=[];
+		resp.forEach(function(item){
+			sched.push(item.fields)
+		})
+		for (var i = 0; i < 2; i++) {
+			$("#listPanel").append($("<a>",{"href":"#semanas"+(i+1), "class":"list-group-item", "data-toggle":"collapse", "data-parent":"#asideSemanas"})
+				.text("Parcial "+ (i+1)))
+			.append($("<div>", {"class":"collapse", "id":"semanas"+(i+1)}));
+			for (var index = 0; index < 7; index++) {
+				$("#semanas"+(i+1)).append($("<a>",{"href":"#p"+(i+1)+"clases"+(index+1), "class":"list-group-item", "data-toggle":"collapse", "data-parent":"#semanas"+(i+1)})
+					.text("Semana "+ (index+1)))
+				.append($("<div>", {"class":"collapse", "id":"p"+(i+1)+"clases"+(index+1)}));
+				for (var j = 0; j < 2; j++) {
+					cla=getClase(i, index, j);
+					if(cla)
+					$("#p"+(i+1)+"clases"+(index+1)).append($("<a>",{"href":"#", "class":"list-group-item", "data-parent":"#p"+(i+1)+"clases"+(index+1)})
+						.text(cla.descripcion)
+						.click(function () {
+							mostrarClase(i, index, j);
+						}));
+				}
+			}
+		}
+	})
+})

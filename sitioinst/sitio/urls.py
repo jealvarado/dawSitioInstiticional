@@ -26,5 +26,7 @@ urlpatterns = [
 	url(r'^ayudantias', views.ayudantias, name='ayudantias'),
 	url(r'^equipo(?P<num>[0-9]{0,1})', views.equipo, name='equipo'),
 	url(r'^week2week', views.planificacion, name='planificacion'),
+    url(r'^noticias', views.noticias, name='noticias'),
+    url(r'^rankings', views.rankings, name='rankings'),
     url(r'^', views.index, name='index'),
 ]

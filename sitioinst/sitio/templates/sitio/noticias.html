@@ -1,0 +1,12 @@
+{% extends "sitio/base.html" %}
+
+{% load static %}
+
+{% block content %}
+	{% for noti in news %}
+		{{ noti.contenido|safe }}
+		<label>Publicado: {{noti.fecha}}</label>
+	{% empty %}
+		<p>No hay noticias que mostrar</p>
+	{% endfor %}
+{% endblock %}

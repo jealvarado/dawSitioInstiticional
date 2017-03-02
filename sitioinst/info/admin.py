@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import  Ayudante, AyudanteTareas, Ayudantia, Profesor, Clase, Seccion, Requisito, CoRequisito
+from .models import  Ayudante, AyudanteTareas, Ayudantia, Profesor, Clase, Seccion, Requisito, CoRequisito, Noticia
 
 admin.site.register(Ayudante)
 admin.site.register(Ayudantia)
@@ -12,3 +12,4 @@ admin.site.register(Clase)
 admin.site.register(Seccion)
 admin.site.register(Requisito)
 admin.site.register(CoRequisito)
+admin.site.register(Noticia)
