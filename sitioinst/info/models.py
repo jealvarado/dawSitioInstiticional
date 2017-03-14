@@ -25,6 +25,8 @@ class AyudanteTareas(models.Model):
 	paralelo= models.IntegerField()
 	aula= models.CharField(max_length=50)
 	horario= models.CharField(max_length=50)
+	def __str__(self):
+		return self.nombres + " " + self.apellidos
 
 class Ayudantia(models.Model):
 	DIA_CHOICES = (
@@ -43,6 +45,8 @@ class Ayudantia(models.Model):
 	aula= models.CharField(max_length=10)
 	edificio= models.CharField(max_length=10)
 	mapa= models.URLField(max_length=250)
+	def __str__(self):
+		return self.ayudante.nombres + " " + self.ayudante.apellidos  + ". " + self.dia + " " + str(self.horaInicio)+ ". Aula: " + self.aula
 
 class Profesor(models.Model):
 	nombres= models.CharField(max_length=50)
@@ -52,25 +56,29 @@ class Profesor(models.Model):
 	oficina= models.CharField(max_length=20)
 	coordinador= models.BooleanField()
 	img= models.URLField(blank=True)
+	def __str__(self):
+		return self.nombres + " " + self.apellidos
 
 class Clase(models.Model):
 	parcial= models.IntegerField(validators=[MaxValueValidator(2), MinValueValidator(1)])
 	semana= models.IntegerField(validators=[MaxValueValidator(7), MinValueValidator(1)])
 	clase= models.IntegerField(validators=[MaxValueValidator(2), MinValueValidator(1)])
-	tema= models.CharField(max_length=50)
-	descripcion= models.CharField(max_length=50)
+	tema= models.CharField(max_length=100)
+	descripcion= models.CharField(max_length=100)
 	video= models.BooleanField()
-	linkVideo= models.URLField()
+	linkVideo= models.URLField(blank=True)
 	diapositiva= models.BooleanField()
 	linkDiapositiva= models.FileField(blank=True, upload_to='diapositivas/')
-	lectura= models.BooleanField()
-	linkLectura= models.FileField(blank=True)
-	linkCap= models.FileField(blank=True)
+	lectura= models.CharField(max_length=100, blank=True)
+	linkLectura= models.URLField(blank=True)
+	linkCap= models.FileField(blank=True, upload_to='libros/')
 	controlLectura= models.BooleanField()
 	leccion= models.BooleanField()
 	taller= models.BooleanField()
 	deber= models.BooleanField()
 	proyecto= models.BooleanField()
+	def __str__(self):
+		return "Parcial:" + str(self.parcial) + ", Semana:" + str(self.semana) + ", Clase:" + str(self.clase) + ". " +  self.tema
 
 class Seccion(models.Model):
 	DESCRIPCION = 'DES'
@@ -89,10 +97,14 @@ class Seccion(models.Model):
 class Requisito(models.Model):
 	codigo= models.CharField(max_length=12, primary_key=True)
 	nombre= models.CharField(max_length=50)
+	def __str__(self):
+		return self.codigo + " " + self.nombre
 
 class CoRequisito(models.Model):
 	codigo= models.CharField(max_length=12, primary_key=True)
 	nombre= models.CharField(max_length=50)
+	def __str__(self):
+		return self.codigo + " " + self.nombre
 
 class Noticia(models.Model):
 	titulo = models.CharField(max_length=100)
