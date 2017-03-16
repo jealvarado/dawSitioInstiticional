@@ -8,7 +8,7 @@ $(document).ready(function(){
 	$.ajax({
 		type: "GET",
 		crossDomain:true,
-		url: "http://localhost:3000/api/resuelto",
+		url: "http://http://sandboxdaw.herokuapp.com/api/resuelto",
 		success: function (data) {		
 			data.resueltos.forEach(function (resuelto) {
 				if (dictResuel[resuelto.idUsuario]) {
@@ -21,7 +21,7 @@ $(document).ready(function(){
 			$.ajax({
 				type: "GET",
 				crossDomain:true,
-				url: "http://localhost:3000/api/usuario",
+				url: "http://http://sandboxdaw.herokuapp.com/api/usuario",
 				success: function (datos) {					
 					datos.usuarios.forEach(function(usuario) {
 						if(usuario.rol=="Estudiante"){
